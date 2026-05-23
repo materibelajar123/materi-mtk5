@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aplikasi Belajar Matematika Kelas 5</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#333;
+}
+
+header{
+    background:#4a90e2;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#4a90e2;
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.3s;
+    margin:5px;
+}
+
+button:hover{
+    background:#357abd;
+    transform:scale(1.03);
+}
+
+.section{
+    display:none;
+    background:white;
+    padding:20px;
+    margin-top:25px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+img{
+    width:100%;
+    max-width:450px;
+    border-radius:10px;
+    margin:15px 0;
+}
+
+hr{
+    margin:30px 0;
+}
+
+.rumus{
+    background:#eef5ff;
+    padding:12px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.soal{
+    background:#fafafa;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.hasil{
+    display:none;
+    margin-top:15px;
+    padding:10px;
+    border-radius:8px;
+}
+
+footer{
+    margin-top:30px;
+    background:#4a90e2;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+#scoreBox{
+    background:#eef5ff;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
+
+<script>
+
+function bukaMateri(id){
+
+    const semua = document.querySelectorAll('.section');
+
+    semua.forEach(function(item){
+        item.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'block';
+
+    window.scrollTo({
+        top: document.getElementById(id).offsetTop - 20,
+        behavior:'smooth'
+    });
+
+}
+
+let skor = 0;
+let sudahJawab = {};
+
+function cekJawaban(nomor,pilihan,benar,pembahasan){
+
+    if(sudahJawab[nomor]){
+        return;
+    }
+
+    sudahJawab[nomor] = true;
+
+    const hasil = document.getElementById("hasil"+nomor);
+
+    hasil.style.display = "block";
+
+    if(pilihan === benar){
+
+        skor++;
+
+        document.getElementById("score").innerHTML = skor;
+
+        hasil.style.background = "#d4edda";
+        hasil.style.color = "green";
+
+        hasil.innerHTML =
+        "✅ Jawaban Benar!<br><br><b>Pembahasan:</b><br>" + pembahasan;
+
+    }else{
+
+        hasil.style.background = "#f8d7da";
+        hasil.style.color = "red";
+
+        hasil.innerHTML =
+        "❌ Jawaban Salah!<br><br><b>Pembahasan:</b><br>" + pembahasan;
+
+    }
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📘 Aplikasi Belajar Matematika Kelas 5</h1>
+
+<p>Rangkuman Materi dan Latihan Soal Interaktif</p>
+
+</header>
+
+<div class="container">
+
+<!-- MENU -->
+<div class="menu">
+
+<button onclick="bukaMateri('sudut')">
+📐 Materi Sudut
+</button>
+
+<button onclick="bukaMateri('segitiga')">
+🔺 Materi Segitiga
+</button>
+
+<button onclick="bukaMateri('persegi')">
+◼️ Materi Persegi
+</button>
+
+<button onclick="bukaMateri('data')">
+📊 Materi Data
+</button>
+
+<button onclick="bukaMateri('latihan')">
+📝 Latihan Soal
+</button>
+
+</div>
+
+<!-- MATERI SUDUT -->
+<div class="section" id="sudut">
+
+<h2>📐 Materi Sudut</h2>
+
+<p>
+Sudut adalah daerah yang dibentuk oleh dua garis yang bertemu pada satu titik.
+Sudut sering ditemukan dalam kehidupan sehari-hari, misalnya pada jam, gunting, pintu, dan penggaris.
+</p>
+
+<hr>
+
+<h3>1. Sudut Lancip</h3>
+
+<p>
+Sudut lancip adalah sudut yang besarnya kurang dari 90°.
+Contohnya ujung segitiga dan jarum jam tertentu.
+</p>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw7WrhPkcndc6Km-zeaucmi7K9cf_7-Dqxcg&s">
+
+<hr>
+
+<h3>2. Sudut Siku-Siku</h3>
+
+<p>
+Sudut siku-siku adalah sudut yang besarnya tepat 90°.
+Contohnya sudut pada buku dan meja.
+</p>
+
+<img src="https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/what-is-a-right-angletwinkl-teaching-maths-wiki3_ver_1.png">
+
+<hr>
+
+<h3>3. Sudut Tumpul</h3>
+
+<p>
+Sudut tumpul adalah sudut yang besarnya lebih dari 90° tetapi kurang dari 180°.
+Contohnya pintu yang terbuka lebar.
+</p>
+
+<img src="https://www.mathsisfun.com/geometry/images/obtuse-angles-hdr.png">
+
+<hr>
+
+<h3>4. Sudut Lurus</h3>
+
+<p>
+Sudut lurus adalah sudut yang besarnya tepat 180°.
+Sudut ini membentuk garis lurus.
+</p>
+
+<img src="https://study.com/cimages/multimages/16/straight_line_psf5859220528067072046.png">
+
+<div class="rumus">
+Kesimpulan:
+<ul>
+<li>Sudut lancip kurang dari 90°</li>
+<li>Sudut siku-siku tepat 90°</li>
+<li>Sudut tumpul antara 90° dan 180°</li>
+<li>Sudut lurus tepat 180°</li>
+</ul>
+</div>
+
+</div>
+
+<!-- MATERI SEGITIGA -->
+<div class="section" id="segitiga">
+
+<h2>🔺 Materi Segitiga</h2>
+
+<p>
+Segitiga adalah bangun datar yang memiliki 3 sisi dan 3 sudut.
+Jumlah seluruh sudut pada segitiga adalah 180°.
+</p>
+
+<hr>
+
+<h3>1. Segitiga Sama Sisi</h3>
+
+<p>
+Segitiga sama sisi memiliki semua sisi sama panjang.
+Semua sudutnya juga sama besar.
+</p>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb-Bxcd04xu4cr_7hhytI3H_jJ4-1e2yY6qg&s">
+
+<hr>
+
+<h3>2. Segitiga Sama Kaki</h3>
+
+<p>
+Segitiga sama kaki memiliki dua sisi yang sama panjang.
+</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Triangle.Isosceles.svg/250px-Triangle.Isosceles.svg.png">
+
+<hr>
+
+<h3>3. Segitiga Siku-Siku</h3>
+
+<p>
+Segitiga siku-siku memiliki satu sudut siku-siku.
+</p>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2SEE01_uJevjrbN_8PeUyVgnG71YcMtAkLg&s">
+
+<hr>
+
+<h3>4. Segitiga Sembarang</h3>
+
+<p>
+Segitiga sembarang memiliki semua sisi berbeda panjang.
+</p>
+
+<img src="https://helpingwithmath.com/wp-content/uploads/2022/08/image-115.png">
+
+<hr>
+
+<h3>Rumus Luas Segitiga</h3>
+
+<div class="rumus">
+Luas = ½ × alas × tinggi
+</div>
+
+</div>
+
+<!-- MATERI PERSEGI -->
+<div class="section" id="persegi">
+
+<h2>◼️ Materi Persegi dan Persegi Panjang</h2>
+
+<p>
+Persegi dan persegi panjang termasuk bangun datar segi empat.
+Keduanya memiliki 4 sisi dan 4 sudut siku-siku.
+</p>
+
+<hr>
+
+<h3>1. Persegi</h3>
+
+<p>
+Persegi memiliki 4 sisi yang sama panjang dan 4 sudut siku-siku.
+</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/1280px-Square_-_black_simple.svg.png">
+
+<div class="rumus">
+Rumus Luas Persegi:
+<br><br>
+Luas = sisi × sisi
+</div>
+
+<hr>
+
+<h3>2. Persegi Panjang</h3>
+
+<p>
+Persegi panjang memiliki sisi berhadapan yang sama panjang.
+</p>
+
+<img src="https://t4.ftcdn.net/jpg/05/86/26/09/360_F_586260996_DVZ5LnDr1O6Uapw6Pf0yET2rbwcH9tO8.jpg">
+
+<div class="rumus">
+Rumus Luas Persegi Panjang:
+<br><br>
+Luas = panjang × lebar
+</div>
+
+</div>
+
+<!-- MATERI DATA -->
+<div class="section" id="data">
+
+<h2>📊 Materi Data</h2>
+
+<p>
+Data adalah kumpulan informasi yang diperoleh dari hasil pengamatan atau pencatatan.
+Data dapat disajikan dalam berbagai bentuk agar lebih mudah dipahami.
+</p>
+
+<hr>
+
+<h3>1. Tabel</h3>
+
+<p>
+Tabel digunakan untuk menyusun data dalam bentuk baris dan kolom.
+</p>
+
+<img src="https://ghost-blog-assets.zenius.net/wordpress/2022/04/7-5.webp">
+
+<div class="rumus">
+Kegunaan tabel:
+<ul>
+<li>Menyusun data lebih rapi</li>
+<li>Mempermudah membaca data</li>
+<li>Mempermudah menghitung data</li>
+</ul>
+</div>
+
+<hr>
+
+<h3>2. Diagram Batang</h3>
+
+<p>
+Diagram batang menggunakan batang untuk menunjukkan banyaknya data.
+</p>
+
+<img src="https://cdn-web-2.ruangguru.com/landing-pages/assets/1688caa3-8c95-4315-a5dc-c085486da6fa.png">
+
+<div class="rumus">
+Ciri diagram batang:
+<ul>
+<li>Menggunakan batang</li>
+<li>Mudah membandingkan data</li>
+<li>Semakin tinggi batang berarti data semakin banyak</li>
+</ul>
+</div>
+
+<hr>
+
+<h3>3. Piktogram</h3>
+
+<p>
+Piktogram adalah penyajian data menggunakan gambar atau simbol.
+</p>
+
+<img src="https://cdn.grid.id/crop/0x0:0x0/x/photo/2024/05/16/piktogram-buahjpg-20240516120617.jpg">
+
+<div class="rumus">
+Ciri piktogram:
+<ul>
+<li>Menggunakan gambar</li>
+<li>Menarik dan mudah dipahami</li>
+<li>Cocok untuk anak-anak</li>
+</ul>
+</div>
+
+</div>
+
+<!-- GANTI SELURUH BAGIAN LATIHAN SOAL DENGAN SCRIPT INI -->
+
+<!-- LATIHAN SOAL -->
+<div class="section" id="latihan">
+
+    <h2>📝 Latihan Soal Interaktif</h2>
+
+    <p>
+        Pilih jawaban yang benar. Setelah memilih jawaban, pembahasan akan muncul otomatis.
+    </p>
+
+    <div id="scoreBox" class="rumus">
+        Skor: <span id="score">0</span> / 20
+    </div>
+
+<script>
+
+let skor = 0;
+let sudahJawab = {};
+
+function cekJawaban(nomor, pilihan, benar, pembahasan){
+
+    if(sudahJawab[nomor]){
+        return;
+    }
+
+    sudahJawab[nomor] = true;
+
+    const hasil = document.getElementById("hasil"+nomor);
+
+    if(pilihan === benar){
+
+        skor++;
+
+        document.getElementById("score").innerHTML = skor;
+
+        hasil.innerHTML =
+        "✅ Jawaban Benar!<br><br><b>Pembahasan:</b><br>" + pembahasan;
+
+        hasil.style.color = "green";
+
+    }else{
+
+        hasil.innerHTML =
+        "❌ Jawaban Salah!<br><br><b>Pembahasan:</b><br>" + pembahasan;
+
+        hasil.style.color = "red";
+
+    }
+
+}
+
+</script>
+
+<!-- SOAL 1 -->
+<div class="soal">
+
+<p><b>1.</b> Sudut yang besarnya kurang dari 90° disebut ...</p>
+
+<button onclick="cekJawaban(1,'A','C','Sudut lancip memiliki besar kurang dari 90°.')">A. Sudut lurus</button>
+
+<button onclick="cekJawaban(1,'B','C','Sudut lancip memiliki besar kurang dari 90°.')">B. Sudut siku-siku</button>
+
+<button onclick="cekJawaban(1,'C','C','Sudut lancip memiliki besar kurang dari 90°.')">C. Sudut lancip</button>
+
+<button onclick="cekJawaban(1,'D','C','Sudut lancip memiliki besar kurang dari 90°.')">D. Sudut tumpul</button>
+
+<div id="hasil1" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 2 -->
+<div class="soal">
+
+<p><b>2.</b> Sudut siku-siku besarnya adalah ...</p>
+
+<button onclick="cekJawaban(2,'A','B','Sudut siku-siku selalu memiliki besar 90°.')">A. 45°</button>
+
+<button onclick="cekJawaban(2,'B','B','Sudut siku-siku selalu memiliki besar 90°.')">B. 90°</button>
+
+<button onclick="cekJawaban(2,'C','B','Sudut siku-siku selalu memiliki besar 90°.')">C. 180°</button>
+
+<button onclick="cekJawaban(2,'D','B','Sudut siku-siku selalu memiliki besar 90°.')">D. 360°</button>
+
+<div id="hasil2" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 3 -->
+<div class="soal">
+
+<p><b>3.</b> Sudut lurus besarnya adalah ...</p>
+
+<button onclick="cekJawaban(3,'A','C','Sudut lurus memiliki besar 180°.')">A. 90°</button>
+
+<button onclick="cekJawaban(3,'B','C','Sudut lurus memiliki besar 180°.')">B. 120°</button>
+
+<button onclick="cekJawaban(3,'C','C','Sudut lurus memiliki besar 180°.')">C. 180°</button>
+
+<button onclick="cekJawaban(3,'D','C','Sudut lurus memiliki besar 180°.')">D. 360°</button>
+
+<div id="hasil3" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 4 -->
+<div class="soal">
+
+<p><b>4.</b> Jumlah sudut segitiga adalah ...</p>
+
+<button onclick="cekJawaban(4,'A','B','Jumlah seluruh sudut segitiga selalu 180°.')">A. 90°</button>
+
+<button onclick="cekJawaban(4,'B','B','Jumlah seluruh sudut segitiga selalu 180°.')">B. 180°</button>
+
+<button onclick="cekJawaban(4,'C','B','Jumlah seluruh sudut segitiga selalu 180°.')">C. 270°</button>
+
+<button onclick="cekJawaban(4,'D','B','Jumlah seluruh sudut segitiga selalu 180°.')">D. 360°</button>
+
+<div id="hasil4" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 5 -->
+<div class="soal">
+
+<p><b>5.</b> Segitiga yang memiliki semua sisi sama panjang disebut ...</p>
+
+<button onclick="cekJawaban(5,'A','A','Segitiga sama sisi memiliki tiga sisi sama panjang.')">A. Segitiga sama sisi</button>
+
+<button onclick="cekJawaban(5,'B','A','Segitiga sama sisi memiliki tiga sisi sama panjang.')">B. Segitiga siku-siku</button>
+
+<button onclick="cekJawaban(5,'C','A','Segitiga sama sisi memiliki tiga sisi sama panjang.')">C. Segitiga sembarang</button>
+
+<button onclick="cekJawaban(5,'D','A','Segitiga sama sisi memiliki tiga sisi sama panjang.')">D. Segitiga tumpul</button>
+
+<div id="hasil5" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 6 -->
+<div class="soal">
+
+<p><b>6.</b> Rumus luas segitiga adalah ...</p>
+
+<button onclick="cekJawaban(6,'A','B','Luas segitiga = ½ × alas × tinggi.')">A. sisi × sisi</button>
+
+<button onclick="cekJawaban(6,'B','B','Luas segitiga = ½ × alas × tinggi.')">B. ½ × alas × tinggi</button>
+
+<button onclick="cekJawaban(6,'C','B','Luas segitiga = ½ × alas × tinggi.')">C. panjang × lebar</button>
+
+<button onclick="cekJawaban(6,'D','B','Luas segitiga = ½ × alas × tinggi.')">D. alas + tinggi</button>
+
+<div id="hasil6" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 7 -->
+<div class="soal">
+
+<p><b>7.</b> Persegi memiliki ... sisi sama panjang.</p>
+
+<button onclick="cekJawaban(7,'A','C','Persegi memiliki 4 sisi yang sama panjang.')">A. 1</button>
+
+<button onclick="cekJawaban(7,'B','C','Persegi memiliki 4 sisi yang sama panjang.')">B. 2</button>
+
+<button onclick="cekJawaban(7,'C','C','Persegi memiliki 4 sisi yang sama panjang.')">C. 4</button>
+
+<button onclick="cekJawaban(7,'D','C','Persegi memiliki 4 sisi yang sama panjang.')">D. 6</button>
+
+<div id="hasil7" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 8 -->
+<div class="soal">
+
+<p><b>8.</b> Rumus luas persegi adalah ...</p>
+
+<button onclick="cekJawaban(8,'A','A','Luas persegi dihitung dengan sisi × sisi.')">A. sisi × sisi</button>
+
+<button onclick="cekJawaban(8,'B','A','Luas persegi dihitung dengan sisi × sisi.')">B. panjang × lebar</button>
+
+<button onclick="cekJawaban(8,'C','A','Luas persegi dihitung dengan sisi × sisi.')">C. alas × tinggi</button>
+
+<button onclick="cekJawaban(8,'D','A','Luas persegi dihitung dengan sisi × sisi.')">D. sisi + sisi</button>
+
+<div id="hasil8" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 9 -->
+<div class="soal">
+
+<p><b>9.</b> Diagram batang digunakan untuk ...</p>
+
+<button onclick="cekJawaban(9,'A','B','Diagram batang digunakan untuk menyajikan data.')">A. bermain</button>
+
+<button onclick="cekJawaban(9,'B','B','Diagram batang digunakan untuk menyajikan data.')">B. menyajikan data</button>
+
+<button onclick="cekJawaban(9,'C','B','Diagram batang digunakan untuk menyajikan data.')">C. menggambar rumah</button>
+
+<button onclick="cekJawaban(9,'D','B','Diagram batang digunakan untuk menyajikan data.')">D. menghitung luas</button>
+
+<div id="hasil9" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 10 -->
+<div class="soal">
+
+<p><b>10.</b> Piktogram menggunakan ... untuk menunjukkan data.</p>
+
+<button onclick="cekJawaban(10,'A','C','Piktogram menggunakan gambar/simbol.')">A. angka saja</button>
+
+<button onclick="cekJawaban(10,'B','C','Piktogram menggunakan gambar/simbol.')">B. huruf</button>
+
+<button onclick="cekJawaban(10,'C','C','Piktogram menggunakan gambar/simbol.')">C. gambar</button>
+
+<button onclick="cekJawaban(10,'D','C','Piktogram menggunakan gambar/simbol.')">D. garis</button>
+
+<div id="hasil10" class="jawaban"></div>
+
+</div>
+
+<!-- SOAL 11 -->
+<div class="soal">
+<p><b>11.</b> Sudut tumpul besarnya ...</p>
+
+<button onclick="cekJawaban(11,'A','B','Sudut tumpul besarnya antara 90° dan 180°.')">A. kurang dari 90°</button>
+<button onclick="cekJawaban(11,'B','B','Sudut tumpul besarnya antara 90° dan 180°.')">B. antara 90° dan 180°</button>
+<button onclick="cekJawaban(11,'C','B','Sudut tumpul besarnya antara 90° dan 180°.')">C. tepat 90°</button>
+<button onclick="cekJawaban(11,'D','B','Sudut tumpul besarnya antara 90° dan 180°.')">D. 360°</button>
+
+<div id="hasil11" class="jawaban"></div>
+</div>
+
+<!-- SOAL 12 -->
+<div class="soal">
+<p><b>12.</b> Segitiga memiliki ... sisi.</p>
+
+<button onclick="cekJawaban(12,'A','C','Segitiga memiliki 3 sisi.')">A. 2</button>
+<button onclick="cekJawaban(12,'B','C','Segitiga memiliki 3 sisi.')">B. 4</button>
+<button onclick="cekJawaban(12,'C','C','Segitiga memiliki 3 sisi.')">C. 3</button>
+<button onclick="cekJawaban(12,'D','C','Segitiga memiliki 3 sisi.')">D. 5</button>
+
+<div id="hasil12" class="jawaban"></div>
+</div>
+
+<!-- SOAL 13 -->
+<div class="soal">
+<p><b>13.</b> Persegi memiliki ... sudut siku-siku.</p>
+
+<button onclick="cekJawaban(13,'A','D','Persegi memiliki 4 sudut siku-siku.')">A. 1</button>
+<button onclick="cekJawaban(13,'B','D','Persegi memiliki 4 sudut siku-siku.')">B. 2</button>
+<button onclick="cekJawaban(13,'C','D','Persegi memiliki 4 sudut siku-siku.')">C. 3</button>
+<button onclick="cekJawaban(13,'D','D','Persegi memiliki 4 sudut siku-siku.')">D. 4</button>
+
+<div id="hasil13" class="jawaban"></div>
+</div>
+
+<!-- SOAL 14 -->
+<div class="soal">
+<p><b>14.</b> Tabel digunakan untuk ...</p>
+
+<button onclick="cekJawaban(14,'A','A','Tabel digunakan untuk menyusun data.')">A. menyusun data</button>
+<button onclick="cekJawaban(14,'B','A','Tabel digunakan untuk menyusun data.')">B. bermain bola</button>
+<button onclick="cekJawaban(14,'C','A','Tabel digunakan untuk menyusun data.')">C. menggambar</button>
+<button onclick="cekJawaban(14,'D','A','Tabel digunakan untuk menyusun data.')">D. menghitung sudut</button>
+
+<div id="hasil14" class="jawaban"></div>
+</div>
+
+<!-- SOAL 15 -->
+<div class="soal">
+<p><b>15.</b> Rumus luas persegi panjang adalah ...</p>
+
+<button onclick="cekJawaban(15,'A','C','Luas persegi panjang = panjang × lebar.')">A. sisi × sisi</button>
+<button onclick="cekJawaban(15,'B','C','Luas persegi panjang = panjang × lebar.')">B. alas × tinggi</button>
+<button onclick="cekJawaban(15,'C','C','Luas persegi panjang = panjang × lebar.')">C. panjang × lebar</button>
+<button onclick="cekJawaban(15,'D','C','Luas persegi panjang = panjang × lebar.')">D. panjang + lebar</button>
+
+<div id="hasil15" class="jawaban"></div>
+</div>
+
+<!-- SOAL 16 -->
+<div class="soal">
+<p><b>16.</b> Sudut lurus besarnya ...</p>
+
+<button onclick="cekJawaban(16,'A','D','Sudut lurus besarnya 180°.')">A. 45°</button>
+<button onclick="cekJawaban(16,'B','D','Sudut lurus besarnya 180°.')">B. 90°</button>
+<button onclick="cekJawaban(16,'C','D','Sudut lurus besarnya 180°.')">C. 120°</button>
+<button onclick="cekJawaban(16,'D','D','Sudut lurus besarnya 180°.')">D. 180°</button>
+
+<div id="hasil16" class="jawaban"></div>
+</div>
+
+<!-- SOAL 17 -->
+<div class="soal">
+<p><b>17.</b> Sudut pada persegi adalah ...</p>
+
+<button onclick="cekJawaban(17,'A','B','Semua sudut persegi adalah siku-siku.')">A. lancip</button>
+<button onclick="cekJawaban(17,'B','B','Semua sudut persegi adalah siku-siku.')">B. siku-siku</button>
+<button onclick="cekJawaban(17,'C','B','Semua sudut persegi adalah siku-siku.')">C. tumpul</button>
+<button onclick="cekJawaban(17,'D','B','Semua sudut persegi adalah siku-siku.')">D. lurus</button>
+
+<div id="hasil17" class="jawaban"></div>
+</div>
+
+<!-- SOAL 18 -->
+<div class="soal">
+<p><b>18.</b> Diagram batang berbentuk ...</p>
+
+<button onclick="cekJawaban(18,'A','A','Diagram batang berbentuk batang-batang.')">A. batang</button>
+<button onclick="cekJawaban(18,'B','A','Diagram batang berbentuk batang-batang.')">B. lingkaran</button>
+<button onclick="cekJawaban(18,'C','A','Diagram batang berbentuk batang-batang.')">C. segitiga</button>
+<button onclick="cekJawaban(18,'D','A','Diagram batang berbentuk batang-batang.')">D. gambar hewan</button>
+
+<div id="hasil18" class="jawaban"></div>
+</div>
+
+<!-- SOAL 19 -->
+<div class="soal">
+<p><b>19.</b> Segitiga siku-siku memiliki ... sudut siku-siku.</p>
+
+<button onclick="cekJawaban(19,'A','C','Segitiga siku-siku memiliki satu sudut siku-siku.')">A. 3</button>
+<button onclick="cekJawaban(19,'B','C','Segitiga siku-siku memiliki satu sudut siku-siku.')">B. 2</button>
+<button onclick="cekJawaban(19,'C','C','Segitiga siku-siku memiliki satu sudut siku-siku.')">C. 1</button>
+<button onclick="cekJawaban(19,'D','C','Segitiga siku-siku memiliki satu sudut siku-siku.')">D. 4</button>
+
+<div id="hasil19" class="jawaban"></div>
+</div>
+
+<!-- SOAL 20 -->
+<div class="soal">
+<p><b>20.</b> Sudut lancip besarnya ...</p>
+
+<button onclick="cekJawaban(20,'A','A','Sudut lancip besarnya kurang dari 90°.')">A. kurang dari 90°</button>
+<button onclick="cekJawaban(20,'B','A','Sudut lancip besarnya kurang dari 90°.')">B. 180°</button>
+<button onclick="cekJawaban(20,'C','A','Sudut lancip besarnya kurang dari 90°.')">C. lebih dari 180°</button>
+<button onclick="cekJawaban(20,'D','A','Sudut lancip besarnya kurang dari 90°.')">D. tepat 90°</button>
+
+<div id="hasil20" class="jawaban"></div>
+</div>
+
+</div>
+
+<footer>
+
+© 2026 - Aplikasi Belajar Matematika Kelas 5
+
+</footer>
+
+</body>
+</html>
